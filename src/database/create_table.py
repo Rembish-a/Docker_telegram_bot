@@ -3,6 +3,7 @@ from psycopg2 import OperationalError
 
 
 def execute_query(query, connection=conn):
+    "Функція, яка приймає рядок query(повинен бути рядком необхідного для виконання SQL-запиту) і об’єкт з’єднання з БД"
     connection.autocommit = True
     cursor = connection.cursor()
     try:
@@ -12,6 +13,7 @@ def execute_query(query, connection=conn):
         print(f"The error '{e}' occurred")
 
 
+# Стоврюємо SQL-запит на створення необхідної для нас таблиці
 create_message_table = """
 CREATE TABLE IF NOT EXISTS message (
     id SERIAL PRIMARY KEY,
